@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Dynamic Styling</h1>
+    </header>
+    <section id="styling">
+      <!-- <div
+        @click="toggleBox('B')"
+        :style="{borderColor: selectedBoxB ? 'red' : '#52b788'}"
+        class="demo"
+      ></div> -->
+      <div
+        @click="toggleBox('A')"
+        class="demo"
+        :class="{active: selectedBoxA}"
+      ></div>
+      <div @click="toggleBox('B')" class="demo" :class="boxBClasses"></div>
+      <div
+        @click="toggleBox('C')"
+        :class="['demo', boxCClasses]"
+      ></div>
+    </section>
+  </body>
+</html>
