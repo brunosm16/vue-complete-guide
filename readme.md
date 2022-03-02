@@ -7,4 +7,4 @@
 - [x] Basic Core and Concepts
 - [x] Rendering Conditional Contents and Lists
 - [x] Vue Behind The Scenes
-- [ ] Vue Components
+- [x] Vue Components
