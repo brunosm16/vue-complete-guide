@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ activeUser ? " | Active" : "" }}</h2>
+    <h2>{{ name }} {{ isActive ? " | Active" : "" }}</h2>
     <button @click="toggleDetails">Show Details</button>
     <button @click="toggleActive">Toggle Active User</button>
     <ul v-if="detailsVisible">
@@ -22,7 +22,12 @@
 
 <script>
 export default {
+  name: "UserContact",
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -53,19 +58,27 @@ export default {
       required: true,
     },
   },
-  name: "UserContact",
   data() {
     return {
       detailsVisible: false,
-      activeUser: this.isActive,
     };
+  },
+  emits: {
+    "toggle-active": function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn(`Missing required argument 'id'event`);
+        return false;
+      }
+    },
   },
   methods: {
     toggleDetails() {
       this.detailsVisible = !this.detailsVisible;
     },
     toggleActive() {
-      this.activeUser = !this.activeUser;
+      this.$emit("toggle-active", {});
     },
   },
 };

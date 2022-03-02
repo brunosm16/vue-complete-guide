@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <header><h1>Users List</h1></header>
+    <UserForm />
     <ul>
       <UserInfo
         v-for="user in users"
+        @toggle-active="toggleActiveValue"
         :key="user.id"
+        :id="user._id"
         :name="user.name"
         :gender="user.gender"
         :email="user.email"
@@ -306,6 +309,12 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    toggleActiveValue(userId) {
+      const userFound = this.users.find((user) => user._id === userId);
+      if (userFound) userFound.isActive = !userFound.isActive;
+    },
   },
 };
 </script>
