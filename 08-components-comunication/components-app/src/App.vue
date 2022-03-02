@@ -6,8 +6,9 @@
       <UserInfo
         v-for="user in users"
         @toggle-active="toggleActiveValue"
+        @delete-user="deleteUser"
         :key="user._id"
-        :id="user._id"
+        :_id="user._id"
         :name="user.name"
         :gender="user.gender"
         :email="user.email"
@@ -319,6 +320,9 @@ export default {
     },
     saveUser(inputUser) {
       this.users.unshift(inputUser);
+    },
+    deleteUser(userId) {
+      this.users = this.users.filter((user) => user._id !== userId);
     },
   },
 };

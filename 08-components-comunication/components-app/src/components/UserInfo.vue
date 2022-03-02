@@ -3,6 +3,7 @@
     <h2>{{ name }} {{ isActive ? " | Active" : "" }}</h2>
     <button @click="toggleDetails">Show Details</button>
     <button @click="toggleActive">Toggle Active User</button>
+    <button @click="$emit('delete-user', _id)">Delete User</button>
     <ul v-if="detailsVisible">
       <li>
         <strong>Age: {{ age }}</strong>
@@ -24,7 +25,7 @@
 export default {
   name: "UserContact",
   props: {
-    id: {
+    _id: {
       type: String,
       required: true,
     },
@@ -72,13 +73,21 @@ export default {
         return false;
       }
     },
+    "delete-user": function (userId) {
+      if (userId) {
+        return true;
+      } else {
+        console.warn(`Missing required argument 'userId'event`);
+        return false;
+      }
+    },
   },
   methods: {
     toggleDetails() {
       this.detailsVisible = !this.detailsVisible;
     },
     toggleActive() {
-      this.$emit("toggle-active", this.id);
+      this.$emit("toggle-active", this._id);
     },
   },
 };
