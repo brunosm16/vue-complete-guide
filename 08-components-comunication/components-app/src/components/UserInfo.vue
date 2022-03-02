@@ -5,7 +5,7 @@
     <button @click="toggleActive">Toggle Active User</button>
     <ul v-if="detailsVisible">
       <li>
-        <strong>Gender: {{ age }}</strong>
+        <strong>Age: {{ age }}</strong>
       </li>
       <li>
         <strong>Gender: {{ gender }}</strong>
@@ -78,7 +78,7 @@ export default {
       this.detailsVisible = !this.detailsVisible;
     },
     toggleActive() {
-      this.$emit("toggle-active", {});
+      this.$emit("toggle-active", this.id);
     },
   },
 };
