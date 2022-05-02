@@ -8,3 +8,4 @@
 - [x] Rendering Conditional Contents and Lists
 - [x] Vue Behind The Scenes
 - [x] Vue Components
+- [ ] Diving Deeper Into Components
