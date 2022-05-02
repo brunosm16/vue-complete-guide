@@ -20,6 +20,12 @@
       :info-text="activeUser.description"
       :role="activeUser.role"
     ></user-info>
+    <names>
+      <template #name-item="slotProps">
+        <h2>{{ slotProps.itemName }}</h2>
+        <p>{{ slotProps.testProps }}</p>
+      </template>
+    </names>
   </div>
 </template>
 
@@ -28,6 +34,7 @@ import TheHeader from "./components/TheHeader.vue";
 import BadgeList from "./components/BadgeList.vue";
 import UserInfo from "./components/UserInfo.vue";
 import BaseCard from "./components/BaseCard.vue";
+import Names from "./components/Names.vue";
 
 export default {
   components: {
@@ -35,6 +42,7 @@ export default {
     BadgeList,
     UserInfo,
     BaseCard,
+    Names,
   },
   data() {
     return {
