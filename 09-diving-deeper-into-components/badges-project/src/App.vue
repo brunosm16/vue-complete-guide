@@ -30,7 +30,9 @@
     <button @click="toggleComponent('current-goals')">
       show completed goals
     </button>
-    <component :is="selectedComponent" />
+    <keep-alive>
+      <component :is="selectedComponent" />
+    </keep-alive>
   </div>
 </template>
 
