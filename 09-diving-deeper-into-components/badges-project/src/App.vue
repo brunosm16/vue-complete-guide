@@ -26,6 +26,11 @@
         <p>{{ slotProps.testProps }}</p>
       </template>
     </names>
+    <button @click="toggleComponent('active-goals')">show active goals</button>
+    <button @click="toggleComponent('current-goals')">
+      show completed goals
+    </button>
+    <component :is="selectedComponent" />
   </div>
 </template>
 
@@ -35,6 +40,8 @@ import BadgeList from "./components/BadgeList.vue";
 import UserInfo from "./components/UserInfo.vue";
 import BaseCard from "./components/BaseCard.vue";
 import Names from "./components/Names.vue";
+import ActiveGoals from "./components/ActiveGoals.vue";
+import CurrentGoals from "./components/CurrentGoals.vue";
 
 export default {
   components: {
@@ -43,6 +50,8 @@ export default {
     UserInfo,
     BaseCard,
     Names,
+    ActiveGoals,
+    CurrentGoals,
   },
   data() {
     return {
@@ -51,7 +60,13 @@ export default {
         description: "Site owner and admin",
         role: "admin",
       },
+      selectedComponent: "active-goals",
     };
+  },
+  methods: {
+    toggleComponent(componentName) {
+      this.selectedComponent = componentName;
+    },
   },
 };
 </script>
